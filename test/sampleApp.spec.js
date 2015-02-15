@@ -2,6 +2,7 @@
 var Sails = require('sails').Sails;
 var fixtures = require('./helpers/fixtures');
 var path = require('path');
+var fs = require('fs');
 
 describe('Test with models ::', function () {
   //app wrapper
@@ -10,6 +11,9 @@ describe('Test with models ::', function () {
   before(function(done) {
     //set 10sec timeout
     this.timeout(10000);
+
+    //link node modules to the app dir
+    fs.symlinkSync(path.join(__dirname, '../node_modules'), path.join(__dirname, 'helpers/sampleApp/node_modules'), 'file');
 
     //Try to lift
     new Sails().load({
