@@ -16,7 +16,7 @@ module.exports = {
     {
       name: 'admin',
       collections: {
-        user: {username: 'arryon'},
+        user: {username: 'admin'},
       }
     },
     {
