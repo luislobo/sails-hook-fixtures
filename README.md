@@ -1,12 +1,15 @@
-#Fixtures hook
+#Sails-hook-fixtures
+[![Build status][travis-image]][travis-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
+
+Installable hook that injects fixtures into your sails ORM at runtime. With associations!
 
 ##Working
-The local config file <app_dir>/config/local.js is the place where the hook
-looks to find the fixture settings. The settings are ordered in an object with
-key 'order' specifying the order in which the fixtures should be loaded.
+Put your fixtures in sails.config.fixtures and sails will load them into your database at runtime, if the collection is empty.
+
+The fixtures are ordered in an object with 'order' specifying the order in which the fixtures should be loaded.
 Since this hook also injects associations, some models should be populated first
-in order to make the association work. Sails associates based on id's and validates
-the existence of the association before creating it.
+in order to make the association work.
 
 Each key that is not 'order' is assumed to represent the model with the same name.
 The contents of the key must be an array of objects representing model instances.
@@ -73,3 +76,7 @@ fixtures: {
 
 },
 ```
+[travis-image]: https://travis-ci.org/arryon/sails-hook-fixtures.svg?branch=master
+[travis-url]: https://travis-ci.org/arryon/sails-hook-fixtures
+[daviddm-image]: https://david-dm.org/arryon/sails-hook-fixtures.svg
+[daviddm-url]: https://david-dm.org/arryon/sails-hook-fixtures
