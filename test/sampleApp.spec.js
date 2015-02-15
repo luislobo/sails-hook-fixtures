@@ -13,7 +13,13 @@ describe('Test with models ::', function () {
     this.timeout(10000);
 
     //link node modules to the app dir
-    fs.symlinkSync(path.join(__dirname, '../node_modules'), path.join(__dirname, 'helpers/sampleApp/node_modules'), 'file');
+    try {
+      fs.symlinkSync(path.join(__dirname, '../node_modules'), path.join(__dirname, 'helpers/sampleApp/node_modules'), 'file');
+    } catch (e1) {
+      if (e1.code !== 'EEXIST') {
+        throw e1;
+      }
+    }
 
     //Try to lift
     new Sails().load({
