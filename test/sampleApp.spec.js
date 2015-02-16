@@ -54,6 +54,14 @@ describe('Test with models ::', function () {
   });
 
   after(function (done) {
+    //unlink the node_modules symlink
+    try {
+      fs.unlinkSync(path.join(__dirname, 'helpers/sampleApp/node_modules'));
+    } catch (e0) {
+      if (e0.code !== 'EEXIST') {
+        throw e0;
+      }
+    }
     if (sails) {
       return sails.lower(done);
     }
