@@ -38,6 +38,12 @@ var User = {
       via: 'users'
     },
 
+    /* A User can have many pets */
+    pets: {
+      collection: 'pet',
+      via: 'owner'
+    },
+
     /**
      * Validate password used by the local strategy.
      *

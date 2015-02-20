@@ -1,5 +1,5 @@
 module.exports = {
-  order: ['User', 'Group', 'Role'],
+  order: ['User','Pet', 'Group', 'Role'],
   User: [
     {
       username: 'test',
@@ -17,6 +17,12 @@ module.exports = {
       name: 'admin',
       collections: {
         user: {username: 'admin'},
+      }
+    },
+    {
+      name: 'user',
+      collections: {
+        user: {username: 'test'}
       }
     },
     {
@@ -40,4 +46,12 @@ module.exports = {
       }
     }
   ],
+  Pet: [
+    {
+      name: 'Pikachu',
+      models: {
+       owner: {username: 'test'}
+      }
+    }
+  ]
 };
