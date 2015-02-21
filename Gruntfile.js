@@ -31,6 +31,7 @@ module.exports = function(grunt) {
       test: {
         options: {
           reporter: 'spec',
+          require: ['should'],
           timeout: 5000
         },
         src: ['test/**/*.spec.js', '!test/helpers/sampleApp/node_modules/**/*.js']

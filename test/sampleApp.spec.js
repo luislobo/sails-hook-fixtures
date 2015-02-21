@@ -1,10 +1,10 @@
-/*global before, after, describe, it*/
+/*global before, after, describe, it, should*/
 var Sails = require('sails').Sails;
 var fixtures = require('./helpers/fixtures');
 var path = require('path');
 var fs = require('fs');
-var should = require('should');
 var assert = require('assert');
+var _ = require('lodash');
 
 describe('Test with models ::', function () {
   //app wrapper
@@ -71,20 +71,22 @@ describe('Test with models ::', function () {
     return done();
   });
 
-  it('Should have made two user documents', function () {
+  it('Should have made three user documents', function (done) {
     var User = sails.models.user;
     User.find()
     .then(function (results) {
-      results.should.have.length(2);
-    });
+      results.should.have.length(3);
+      done();
+    }).catch(done);
   });
 
-  it('Should have made two group documents', function () {
+  it('Should have made two group documents', function (done) {
     var Group = sails.models.group;
     Group.find()
     .then(function (results) {
       results.should.have.length(2);
-    });
+      done();
+    }).catch(done);
   });
 
   it('Should have made three role documents', function (done) {
@@ -117,12 +119,20 @@ describe('Test with models ::', function () {
     })
     .catch(done);
   });
-  it('Should add the association on the owned side with a one-to-many association', function (done) {
+  it('Should Pikachu is owned by Ash Ketchum', function (done) {
     var Pet = sails.models.pet;
+    Pet.findOne({name:'Pikachu'}).populate('owner')
+    .then(function (pikachu) {
+      pikachu.owner.username.should.equal('Ash Ketchum');
+      done();
+    }).catch(done);
+  });
+
+  it('Should say "Pallet Town" is Ash Ketchum\'s hometown', function (done) {
     var User = sails.models.user;
-    Pet.findOne({name:'Pikachu'})
-    .then(function (pet) {
-      assert(!_.isEmpty(pet.owner));
+    User.findOne({username: 'Ash Ketchum'}).populate('home')
+    .then(function (ash) {
+      ash.home.name.should.equal('Pallet Town');
       done();
     }).catch(done);
   });

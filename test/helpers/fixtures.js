@@ -1,15 +1,22 @@
 module.exports = {
-  order: ['User','Pet', 'Group', 'Role'],
+  order: ['Hometown', 'User','Pet', 'Group', 'Role'],
   User: [
     {
       username: 'test',
-      email: 'test@test.com',
-      password: 'test'
     },
     {
       username: 'admin',
-      email: 'admin@admin.com',
-      password: 'admin'
+    },
+    {
+      username: 'Ash Ketchum',
+      models: {
+        home: ['Pallet Town']
+      }
+    }
+  ],
+  Hometown: [
+    {
+      name: 'Pallet Town'
     }
   ],
   Role: [
@@ -50,7 +57,7 @@ module.exports = {
     {
       name: 'Pikachu',
       models: {
-       owner: {username: 'test'}
+       owner: {username: 'Ash Ketchum'}
       }
     }
   ]
