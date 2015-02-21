@@ -20,7 +20,7 @@ Define your `fixtures` object so that it is loaded as `sails.config.fixtures`. F
 ```javascript
 // sails/config/local.js
 module.exports = {
-  fixtures: [ ... ]
+  fixtures: { ... }
 }
 ```
 
@@ -32,7 +32,7 @@ The fixtures for a model are configured as an array of objects. Each object will
 
 ```javascript
 // sails/config/local.js
-fixtures: [
+fixtures: {
   order: ['User', 'Pet'],
   User: [
     {
@@ -54,7 +54,7 @@ fixtures: [
       type: 'Fire'
     }
   ]
-]
+}
 ```
 
 For an example, take a look at [the sample fixtures used in testing](https://github.com/arryon/sails-hook-fixtures/blob/master/test/helpers/fixtures.js)
