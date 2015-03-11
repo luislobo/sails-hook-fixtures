@@ -8,9 +8,7 @@ Installable hook that injects fixtures into your sails ORM at runtime. With asso
 `npm i sails-hook-fixtures`
 
 ## Usage
-When lifting your Sails app, any fixtures that are loaded are checked against the model tabels/collections in the database. Only if the database table/collection is empty, the fixtures for that table/collection are automatically installed.
-
-Todo is an option that lets you specify if you want to overwrite the table/collection or not.
+When lifting your Sails app, any fixtures that are loaded are checked against the model tabels/collections in the database. If the database table/collection is empty, the fixtures for that table/collection are automatically installed. If you want to overwrite an existing table/collection each time you lift, use the `overwrite` option.
 
 Currently only tested against Waterline + MongoDB.
 
@@ -25,8 +23,6 @@ module.exports = {
 ```
 
 The fixtures object should have an attribute `order` specifying the order in which to populate your models. This is important if you want to associate models.
-
-Each attribute other than `order` is assumed to be the capitalized name of your model. Inability to find the model will silently fail and continue.
 
 The fixtures for a model are configured as an array of objects. Each object will be made into a document in the database.
 
@@ -58,6 +54,14 @@ fixtures: {
 ```
 
 For an example, take a look at [the sample fixtures used in testing](https://github.com/arryon/sails-hook-fixtures/blob/master/test/helpers/fixtures.js)
+
+Each attribute other than those of the options below is assumed to be the capitalized name of your model. Inability to find the model will silently fail and continue.
+
+## Options
+| attribute name      | usage                                                          | example                    |
+|-----------|----------------------------------------------------------------|----------------------------|
+| order     | Specify the order in which to inject fixtures into models      | `order: ['User', 'Group']` |
+| overwrite | Specify which model documents to always overwrite when lifting | `overwrite: ['User']`      |
 
 ## Associations
 The hook can automatically add associations between your models if you specify them in the right way. This only works if you use Waterline!
