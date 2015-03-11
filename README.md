@@ -62,6 +62,7 @@ Each attribute other than those of the options below is assumed to be the capita
 |-----------|----------------------------------------------------------------|----------------------------|
 | order     | Specify the order in which to inject fixtures into models      | `order: ['User', 'Group']` |
 | overwrite | Specify which model documents to always overwrite when lifting | `overwrite: ['User']`      |
+| empty | Specify which model documents to empty before installing any fixtures | `empty: ['Pet']` |
 
 ## Associations
 The hook can automatically add associations between your models if you specify them in the right way. This only works if you use Waterline!
