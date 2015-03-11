@@ -1,4 +1,4 @@
-/*global before, after, describe, it, should*/
+/* global before, after, describe, it */
 var Sails = require('sails').Sails;
 var fixtures = require('./helpers/fixtures');
 var path = require('path');

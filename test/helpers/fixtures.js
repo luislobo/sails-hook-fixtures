@@ -1,5 +1,6 @@
 module.exports = {
   order: ['Hometown', 'User','Pet', 'Group', 'Role'],
+  overwrite: ['User'],
   User: [
     {
       username: 'test',
