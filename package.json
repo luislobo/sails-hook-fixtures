@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-fixtures",
-  "version": "0.11.7",
+  "version": "0.11.8",
   "description": "Automatically install database fixtures with relations to your database when you lift Sails",
   "main": "lib/index.js",
   "directories": {
@@ -28,19 +28,19 @@
   },
   "homepage": "https://github.com/arryon/sails-hook-fixtures",
   "dependencies": {
-    "bluebird": "~2.10.2",
-    "lodash": "~3.10.0"
+    "bluebird": "~3.3.4",
+    "lodash": "~4.6.1"
   },
   "devDependencies": {
     "bcryptjs": "~2.3.0",
     "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.11.3",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-watch": "~1.0.0",
     "grunt-mocha-test": "^0.12.7",
-    "mocha": "^2.1.0",
-    "sails": "~0.11.0",
-    "sails-mongo": "~0.11.4",
-    "should": "~7.1.0",
+    "mocha": "^2.4.5",
+    "sails": "~0.12.1",
+    "sails-mongo": "~0.12.0",
+    "should": "~8.3.0",
     "should-promised": "0.3.1"
   }
 }
