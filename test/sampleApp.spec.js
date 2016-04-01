@@ -1,74 +1,105 @@
 /* global before, after, describe, it */
 var Sails = require('sails').Sails;
-var fixtures = require('./helpers/fixtures');
 var path = require('path');
 var fs = require('fs');
 var assert = require('assert');
 var _ = require('lodash');
+//app wrapper
+var sails;
+
+function loadSails (done, fixtures) {
+  if (!fixtures) {
+    fixtures = require('./helpers/fixtures');
+  }
+  //link node modules to the app dir
+  try {
+    fs.symlinkSync(path.join(__dirname, '../node_modules'), path.join(__dirname, 'helpers/sampleApp/node_modules'), 'file');
+  } catch (e1) {
+    if (e1.code !== 'EEXIST') {
+      throw e1;
+    }
+  }
+  console.info('Loading Sails');
+  //Try to lift
+  new Sails().load({
+    appPath: path.join(__dirname, 'helpers/sampleApp'),
+    hooks: {
+      'fixtures': require('../lib'),
+      'grunt': false,
+      'views': false,
+      'blueprints': false,
+    },
+    log: {
+      level: 'info'
+    },
+    connections: {
+      test: {
+        adapter: 'sails-mongo',
+        host:'localhost',
+        port: 27017,
+        database: 'sails-hook-fixtures-testdb'
+      },
+    },
+    models: {
+      connection: 'test',
+      migrate: 'drop'
+    },
+    fixtures: fixtures
+  }, function (err, _sails) {
+    if (err) { return done(err); }
+    sails = _sails;
+    return done();
+  });
+}
+
+function lowerSails (done) {
+  //unlink the node_modules symlink
+  console.info('Lowering Sails');
+  try {
+    fs.unlinkSync(path.join(__dirname, 'helpers/sampleApp/node_modules'));
+  } catch (e0) {
+    if (e0.code !== 'EEXIST') {
+      throw e0;
+    }
+  }
+  if (sails) {
+    return sails.lower(done);
+  }
+  //otherwise, just done
+  return done();
+}
+
+function reloadSails (done) {
+  lowerSails(function () {
+    loadSails(done);
+  });
+}
+describe('Test with one empty fixture :: ', function () {
+  before(function(done) {
+    var fixtures = _.cloneDeep(require('./helpers/fixtures'));
+    //empty roles to test empty list
+    fixtures.Role = [];
+    this.timeout(10000);
+    loadSails(done, fixtures);
+  });
+  after(function(done) {
+    lowerSails(done);
+  });
+  it('Should disregard an empty fixture array', function (done) {
+    return done();
+  });
+})
 
 describe('Test with models ::', function () {
-  //app wrapper
-  var sails;
   //before, lift sails
   before(function(done) {
     //set 10sec timeout
     this.timeout(10000);
-
-    //link node modules to the app dir
-    try {
-      fs.symlinkSync(path.join(__dirname, '../node_modules'), path.join(__dirname, 'helpers/sampleApp/node_modules'), 'file');
-    } catch (e1) {
-      if (e1.code !== 'EEXIST') {
-        throw e1;
-      }
-    }
-
-    //Try to lift
-    new Sails().load({
-      appPath: path.join(__dirname, 'helpers/sampleApp'),
-      hooks: {
-        'fixtures': require('../lib'),
-        'grunt': false,
-        'views': false,
-        'blueprints': false,
-      },
-      log: {
-        level: 'info'
-      },
-      connections: {
-        test: {
-          adapter: 'sails-mongo',
-          host:'localhost',
-          port: 27017,
-          database: 'sails-hook-fixtures-testdb'
-        },
-      },
-      models: {
-        connection: 'test',
-        migrate: 'drop'
-      },
-      fixtures: fixtures
-    }, function (err, _sails) {
-      if (err) { return done(err); }
-      sails = _sails;
-      return done();
-    });
+    loadSails(done);
   });
 
   after(function (done) {
-    //unlink the node_modules symlink
-    try {
-      fs.unlinkSync(path.join(__dirname, 'helpers/sampleApp/node_modules'));
-    } catch (e0) {
-      if (e0.code !== 'EEXIST') {
-        throw e0;
-      }
-    }
-    if (sails) {
-      return sails.lower(done);
-    }
-    //otherwise, just done
-    return done();
+    lowerSails(done);
   });
 
   it('Should have made three user documents', function (done) {

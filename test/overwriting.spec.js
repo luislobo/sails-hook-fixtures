@@ -91,14 +91,14 @@ describe('Test overwriting ::', function () {
     var ids_before;
     User.find()
     .then(function (results) {
-      return _.pluck(results, 'id');
+      return _.map(results, 'id');
     })
     .then(function (ids) {
       ids_before = ids;
       reloadSails(function () {
         User.find()
         .then(function (results) {
-          var ids_after = _.pluck(results, 'id');
+          var ids_after = _.map(results, 'id');
           ids_after.should.not.equal(ids_before);
           done();
         })

@@ -76,7 +76,7 @@ describe('Test without fixtures ::', function () {
     return done();
   });
 
-  it('should not crash when there are no fixtures', function () {
-    return true;
+  it('should not crash when there are no fixtures', function (done) {
+    return done()
   });
 });
