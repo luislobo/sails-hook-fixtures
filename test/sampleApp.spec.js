@@ -27,7 +27,7 @@ function loadSails (done, fixtures) {
       'fixtures': require('../lib'),
       'grunt': false,
       'views': false,
-      'blueprints': false,
+      'blueprints': false
     },
     log: {
       level: 'info'
@@ -38,7 +38,7 @@ function loadSails (done, fixtures) {
         host:'localhost',
         port: 27017,
         database: 'sails-hook-fixtures-testdb'
-      },
+      }
     },
     models: {
       connection: 'test',
@@ -69,11 +69,6 @@ function lowerSails (done) {
   return done();
 }
 
-function reloadSails (done) {
-  lowerSails(function () {
-    loadSails(done);
-  });
-}
 describe('Test with one empty fixture :: ', function () {
   before(function(done) {
     var fixtures = _.cloneDeep(require('./helpers/fixtures'));
@@ -88,7 +83,7 @@ describe('Test with one empty fixture :: ', function () {
   it('Should disregard an empty fixture array', function (done) {
     return done();
   });
-})
+});
 
 describe('Test with models ::', function () {
   //before, lift sails
@@ -125,6 +120,15 @@ describe('Test with models ::', function () {
     Role.find()
     .then(function (results) {
       results.should.have.length(3);
+      done();
+    }).catch(done);
+  });
+  
+  it('Should have made two company documents', function (done) {
+    var Company = sails.models.company;
+    Company.find()
+    .then(function (results) {
+      results.should.have.length(2);
       done();
     }).catch(done);
   });

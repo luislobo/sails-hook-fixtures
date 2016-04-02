@@ -1,5 +1,5 @@
 module.exports = {
-  order: ['Hometown', 'User','Pet', 'Group', 'Role'],
+  order: ['Hometown', 'User', 'Pet', 'Group', 'Role', 'Company'],
   overwrite: ['User'],
   User: [
     {
@@ -24,7 +24,7 @@ module.exports = {
     {
       name: 'admin',
       collections: {
-        user: {username: 'admin'},
+        user: {username: 'admin'}
       }
     },
     {
@@ -44,7 +44,7 @@ module.exports = {
     {
       name: 'Admin group',
       collections: {
-        user: {username: ['admin']},
+        user: {username: ['admin']}
       }
     },
     {
@@ -58,7 +58,28 @@ module.exports = {
     {
       name: 'Pikachu',
       models: {
-       owner: {username: 'Ash Ketchum'}
+        owner: {username: 'Ash Ketchum'}
+      }
+    }
+  ],
+  Company: [
+    {
+      name: 'Sweet & Co',
+      models: {
+        hometown: ['Pallet Town']
+      },
+      collections: {
+        group: ['Admin group', 'Ordinary group']
+      }
+    },
+    {
+      id: '56ff2dcde7db1b663d0ae57e',
+      name: 'Nice & Co',
+      models: {
+        hometown: ['Pallet Town']
+      },
+      collections: {
+        group: ['Admin group', 'Ordinary group']
       }
     }
   ]

@@ -22,6 +22,12 @@
     "hook"
   ],
   "author": "Arryon Tijsma",
+  "contributors": [
+    {
+      "name": "Luis Lobo Borobia",
+      "email": "luislobo@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/arryon/sails-hook-fixtures/issues"

@@ -23,5 +23,11 @@ module.exports = {
       collection: 'role',
       via: 'groups'
     },
+    
+    /* A company  */
+    company:{
+      collection: 'company',
+      via: 'companyGroups'
+    }
   }
 };
