@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-fixtures",
-  "version": "0.11.8",
+  "version": "0.11.9",
   "description": "Automatically install database fixtures with relations to your database when you lift Sails",
   "main": "lib/index.js",
   "directories": {
@@ -35,7 +35,7 @@
   "homepage": "https://github.com/arryon/sails-hook-fixtures",
   "dependencies": {
     "bluebird": "~3.3.4",
-    "lodash": "~4.6.1"
+    "lodash": "4.7.0"
   },
   "devDependencies": {
     "bcryptjs": "~2.3.0",
