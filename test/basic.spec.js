@@ -60,7 +60,7 @@ describe('Test without fixtures ::', function () {
       },
       log: {
         level: 'error'
-      },
+      }
     }, function (err, _sails) {
       if (err) { return done(err); }
       sails = _sails;
@@ -77,6 +77,6 @@ describe('Test without fixtures ::', function () {
   });
 
   it('should not crash when there are no fixtures', function (done) {
-    return done()
+    return done();
   });
 });
