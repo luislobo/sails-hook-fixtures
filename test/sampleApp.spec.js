@@ -42,7 +42,7 @@ function loadSails (done, fixtures) {
     },
     models: {
       connection: 'test',
-      migrate: 'drop'
+      migrate: 'drop',
     },
     fixtures: fixtures
   }, function (err, _sails) {
@@ -125,6 +125,15 @@ describe('Test with models ::', function () {
     Role.find()
     .then(function (results) {
       results.should.have.length(3);
+      done();
+    }).catch(done);
+  });
+  
+  it('Should have made two company documents', function (done) {
+    var Company = sails.models.company;
+    Company.find()
+    .then(function (results) {
+      results.should.have.length(2);
       done();
     }).catch(done);
   });
