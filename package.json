@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-fixtures",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Automatically install database fixtures with relations to your database when you lift Sails",
   "main": "lib/index.js",
   "directories": {
