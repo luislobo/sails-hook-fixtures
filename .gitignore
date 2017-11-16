@@ -1,4 +1,4 @@
 node_modules
 nbproject
 .DS_Store
-package-lock.json
+npm-debug.log
