@@ -172,7 +172,7 @@ Want to contribute? Clone the repository, install the dependencies with `npm ins
 
 Note that you need a working adaptor for the database. In the test files I describe a `test` connection that uses a local mongoDB instance. Change according to your database configuration.
 
-[travis-image]: https://travis-ci.org/arryon/sails-hook-fixtures.svg?branch=master
-[travis-url]: https://travis-ci.org/arryon/sails-hook-fixtures
-[daviddm-image]: https://david-dm.org/arryon/sails-hook-fixtures.svg
-[daviddm-url]: https://david-dm.org/arryon/sails-hook-fixtures
+[travis-image]: https://travis-ci.org/luislobo/sails-hook-fixtures.svg?branch=master
+[travis-url]: https://travis-ci.org/luislobo/sails-hook-fixtures
+[daviddm-image]: https://david-dm.org/luislobo/sails-hook-fixtures.svg
+[daviddm-url]: https://david-dm.org/luislobo/sails-hook-fixtures
