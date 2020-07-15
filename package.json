@@ -58,7 +58,7 @@
   "homepage": "https://github.com/arryon/sails-hook-fixtures",
   "dependencies": {
     "bluebird": "3.5.1",
-    "lodash": "4.17.10"
+    "lodash": "4.17.19"
   },
   "devDependencies": {
     "bcryptjs": "~2.3.0",
