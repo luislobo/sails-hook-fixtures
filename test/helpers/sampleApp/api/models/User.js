@@ -1,9 +1,9 @@
-var User = {
+const User = {
   // Enforce model schema in the case of schemaless databases
   schema: true,
 
   attributes: {
-    username  : { type: 'string', unique: true, required: true },
+    username: { type: 'string', unique: true, required: true },
     /* A User can belong to many Groups */
     groups: {
       collection: 'group',
@@ -27,10 +27,8 @@ var User = {
       model: 'hometown'
     }
 
-  },
+  }
 
+}
 
-
-};
-
-module.exports = User;
+module.exports = User

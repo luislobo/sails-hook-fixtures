@@ -1,0 +1,10 @@
+{
+  "name": "sails-sample-app",
+  "version": "1.0.0",
+  "description": "Sample App",
+  "dependencies": {
+    "sails": "~1.2.4",
+    "sails-hook-orm": "^3.0.1",
+    "sails-mongo": "Josebaseba/sails-mongo#master"
+  }
+}

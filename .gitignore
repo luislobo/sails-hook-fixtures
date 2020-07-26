@@ -2,3 +2,7 @@ node_modules
 nbproject
 .DS_Store
 npm-debug.log
+.tmp
+package-lock.json
+test/helpers/sampleApp/.tmp
+test/helpers/sampleApp/package-lock.json

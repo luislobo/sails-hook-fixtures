@@ -8,7 +8,7 @@
 module.exports = {
   attributes: {
     name: {
-      type:'string',
+      type: 'string',
       required: true
     },
     /* A Group can contain many Users */
@@ -23,11 +23,11 @@ module.exports = {
       collection: 'role',
       via: 'groups'
     },
-    
+
     /* A company  */
-    company:{
+    company: {
       collection: 'company',
       via: 'companyGroups'
     }
   }
-};
+}

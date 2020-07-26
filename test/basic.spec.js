@@ -1,82 +1,74 @@
-/*global before, after, describe, it*/
-var Sails = require('sails').Sails;
-var fixtures = require('./helpers/fixtures');
+/* global before, after, describe, it */
+const Sails = require('sails').Sails
+const fixtures = require('./helpers/fixtures')
 
-describe('Test without models ::', function () {
-  //app wrapper
-  var sails;
+const { lowerSails } = require('./helpers/sailsHelper')
 
-  //before, lift sails
-  before(function(done) {
-    console.log(__dirname);
-    //set 10sec timeout
-    this.timeout(10000);
+describe('Test without models ::', async () => {
+  // app wrapper
+  let sails
 
-    //Try to lift
-    new Sails().load({
-      hooks: {
-        'fixtures': require('../lib'),
-        'grunt': false
-      },
-      log: {
-        level: 'error'
-      },
-      fixtures: fixtures
-    }, function (err, _sails) {
-      if (err) { return done(err); }
-      sails = _sails;
-      return done();
-    });
-  });
+  // before, lift sails
+  before(async () => {
+    return new Promise((resolve, reject) => {
+      // Try to lift
+      new Sails().load({
+        hooks: {
+          fixtures: require('../lib'),
+          grunt: false
+        },
+        log: {
+          level: 'error'
+        },
+        fixtures: fixtures
+      }, function (err, _sails) {
+        if (err) {
+          reject(err)
+        }
+        sails = _sails
+        resolve()
+      })
+    })
+  })
 
-  after(function (done) {
-    if (sails) {
-      return sails.lower(done);
-    }
-    //otherwise, just done
-    return done();
-  });
+  after(async () => {
+    return lowerSails(sails)
+  })
 
-  it('should not crash when there are no models', function () {
-    return true;
-  });
-});
+  it('should not crash when there are no models', async () => {
+    return true
+  })
+}).timeout(10000)
 
-describe('Test without fixtures ::', function () {
-  //app wrapper
-  var sails;
+describe('Test without fixtures ::', async () => {
+  // app wrapper
+  let sails
 
-  //before, lift sails
-  before(function(done) {
-    console.log(__dirname);
-    //set 10sec timeout
-    this.timeout(10000);
+  // before, lift sails
+  before(async () => {
+    return new Promise((resolve, reject) => {
+      // Try to lift
+      new Sails().load({
+        hooks: {
+          fixtures: require('../lib'),
+          grunt: false
+        },
+        log: {
+          level: 'error'
+        }
+      }, function (err, _sails) {
+        if (err) { return reject(err) }
+        sails = _sails
+        return resolve()
+      })
+    })
+  })
 
-    //Try to lift
-    new Sails().load({
-      hooks: {
-        'fixtures': require('../lib'),
-        'grunt': false
-      },
-      log: {
-        level: 'error'
-      }
-    }, function (err, _sails) {
-      if (err) { return done(err); }
-      sails = _sails;
-      return done();
-    });
-  });
-
-  after(function (done) {
-    if (sails) {
-      return sails.lower(done);
-    }
-    //otherwise, just done
-    return done();
-  });
+  after(async () => {
+    return lowerSails(sails)
+  })
 
   it('should not crash when there are no fixtures', function (done) {
-    return done();
-  });
-});
+    return done()
+  })
+}).timeout(10000)

@@ -10,7 +10,7 @@
 module.exports = {
 
   attributes: {
-    name: { type: 'string', unique: true},
+    name: { type: 'string', unique: true },
 
     /* Users that have this Role */
     users: {
@@ -23,6 +23,6 @@ module.exports = {
       collection: 'group',
       via: 'roles',
       dominant: true
-    },
-  },
-};
+    }
+  }
+}

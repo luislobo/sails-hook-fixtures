@@ -3,10 +3,10 @@ module.exports = {
   overwrite: ['User'],
   User: [
     {
-      username: 'test',
+      username: 'test'
     },
     {
-      username: 'admin',
+      username: 'admin'
     },
     {
       username: 'Ash Ketchum',
@@ -24,13 +24,13 @@ module.exports = {
     {
       name: 'admin',
       collections: {
-        user: {username: 'admin'}
+        user: { username: 'admin' }
       }
     },
     {
       name: 'user',
       collections: {
-        user: {username: 'test'}
+        user: { username: 'test' }
       }
     },
     {
@@ -44,13 +44,13 @@ module.exports = {
     {
       name: 'Admin group',
       collections: {
-        user: {username: ['admin']}
+        user: { username: ['admin'] }
       }
     },
     {
       name: 'Ordinary group',
       collections: {
-        user: {username: ['test']}
+        user: { username: ['test'] }
       }
     }
   ],
@@ -58,7 +58,7 @@ module.exports = {
     {
       name: 'Pikachu',
       models: {
-        owner: {username: 'Ash Ketchum'}
+        owner: { username: 'Ash Ketchum' }
       }
     }
   ],
@@ -83,4 +83,4 @@ module.exports = {
       }
     }
   ]
-};
+}

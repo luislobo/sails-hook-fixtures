@@ -1,32 +1,41 @@
 {
   "name": "sails-hook-fixtures",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Automatically install database fixtures with relations to your database when you lift Sails",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha test/*.spec.js",
+    "pretest": "cd test/helpers/sampleApp; npm i --silent --no-audit --no-fund ;cd ../../.."
   },
   "sails": {
     "isHook": true
   },
+  "engines": {
+    "npm": "^6.0.0",
+    "node": ">=10"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arryon/sails-hook-fixtures"
+    "url": "https://github.com/luislobo/sails-hook-fixtures"
   },
   "keywords": [
     "Sails.JS",
     "fixtures",
     "hook"
   ],
-  "author": "Arryon Tijsma",
+  "author": {
+    "name": "Luis Lobo Borobia",
+    "email": "luislobo@gmail.com",
+    "url": "https://github.com/luislobo"
+  },
   "contributors": [
     {
       "name": "Arryon Tijsma",
       "email": "arryon@gmail.com",
-      "url": "https://github.com/arryon",
+      "url": "https://github.com/luislobo",
       "contributions": 24,
       "additions": 1587,
       "deletions": 347,
@@ -53,23 +62,23 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arryon/sails-hook-fixtures/issues"
+    "url": "https://github.com/luislobo/sails-hook-fixtures/issues"
   },
-  "homepage": "https://github.com/arryon/sails-hook-fixtures",
+  "homepage": "https://github.com/luislobo/sails-hook-fixtures",
   "dependencies": {
-    "bluebird": "3.5.1",
-    "lodash": "4.17.10"
+    "bluebird": "3.7.2",
+    "debug": "^4.1.1",
+    "lodash": "4.17.19",
+    "supports-color": "^7.1.0"
   },
   "devDependencies": {
-    "bcryptjs": "~2.3.0",
-    "grunt": "~1.0.1",
-    "grunt-contrib-jshint": "~1.1.0",
-    "grunt-contrib-watch": "~1.1.0",
-    "grunt-mocha-test": "~0.13.2",
-    "mocha": "^5.2.0",
-    "sails": "~0.12.3",
-    "sails-mongo": "~0.12.0",
-    "should": "~11.1.0",
-    "should-promised": "~0.3.1"
+    "bcryptjs": "~2.4.3",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "mocha": "~8.0.1",
+    "mongodb": "^3.5.9",
+    "resnap": "^1.0.1",
+    "sails": "~1.2.4",
+    "standard": "~14.3.4"
   }
 }
